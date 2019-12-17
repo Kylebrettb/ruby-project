@@ -1,0 +1,7 @@
+<h1><%=@hotel.name%></h1>
+<p><%=@hotel.summary%></p>
+	<p><%=@hotel.city%></p>
+	<h3>Room Types</h3>
+	<% @hotel.hotel_rooms.each do |hr| %>
+	<p><%="#{hr.room_type} - #{hr.description} - #{hr.price}" %><%= link_to 'Book Room', new_reservation_path(hotel_room_id: hr.id) %></p>
+		<% end %>
