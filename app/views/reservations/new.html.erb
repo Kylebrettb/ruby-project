@@ -5,6 +5,7 @@
   <%= f.date_select :check_in%><br>
   <%= f.label :check_out%><br>
   <%= f.date_select :check_out%><br>
+  <%= f.hidden_field :hotel_id, value: @hotel_room.hotel_id%><br>
   <%= f.hidden_field :hotel_room_id, value: @hotel_room.id%><br>
   <%= f.hidden_field :user_id, value: current_user.id%><br>
   <%= f.submit %>

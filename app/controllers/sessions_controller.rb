@@ -18,4 +18,13 @@ class SessionsController < ApplicationController
 
   def welcome
   end
+  def destroy
+    session.delete(:user_id)
+    redirect_to '/welcome'
+  end
+  private
+ 
+  def auth
+    request.env['omniauth.auth']
+  end
 end

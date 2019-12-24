@@ -1,13 +1,14 @@
 class Reservation < ApplicationRecord
 	belongs_to :user
-	def calculate_total
-	nights = self.total_nights == 0? 1 : self.total_nights
-    cost = nights * room.room_rate * number_of_rooms
+	def self.calculate_total(total_nights, room_rate)
+	
+    cost = total_nights * room_rate 
     taxes = cost * 0.15
     cost + taxes
 	end
-	def total_nights
-    (checkout_datetime.to_date - checkin_datetime.to_date).to_i
+	def self.total_nights(reservation)
+
+    (reservation.check_out - reservation.check_in).to_i
   end
 
   
