@@ -5,3 +5,18 @@
 	<% @hotel.hotel_rooms.each do |hr| %>
 	<p><%="#{hr.room_type} - #{hr.description} - #{hr.price}" %><%= link_to 'Book Room', new_reservation_path(hotel_room_id: hr.id) %></p>
 		<% end %>
+
+<h3>Leave a Review</h3>
+		<%= form_for @review do |f|%>
+
+		  <%= f.label :content%><br>
+		  <%= f.text_area :content%><br>
+		  <%= f.hidden_field :hotel_id, value: @hotel.id%><br>
+		  <%= f.hidden_field :user_id, value: current_user.id%><br>
+		  <%= f.submit %>
+
+		<%end%>
+
+<%@hotel.reviews.each do |review|%>
+<p><%=review.user.name%> said <%=review.content%>/<%=review.created_at%></p>
+<%end%>

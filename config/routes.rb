@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 	get '/confirmation', to: 'reservations#confirmation'
 	delete 'logout', to: 'sessions#destroy'
 	get '/auth/facebook/callback' => 'sessions#create'
+	resources :reviews
   resources :users, only: [:new, :create]
 end
