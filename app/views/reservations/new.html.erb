@@ -1,13 +1,23 @@
 <h1> Reservation </h1>
+<% if @reservation.errors.any? %>
+<h2>Errors</h2>
+<% @reservation.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+<%end%>
+
 <%= form_for @reservation, :url => {:action => "create"} do |f|%>
-  
+
   <%= f.label :check_in%><br>
   <%= f.date_select :check_in%><br>
+
   <%= f.label :check_out%><br>
   <%= f.date_select :check_out%><br>
-  <%= f.hidden_field :hotel_id, value: @hotel_room.hotel_id%><br>
-  <%= f.hidden_field :hotel_room_id, value: @hotel_room.id%><br>
+
+  <%= f.hidden_field :hotel_id%><br>
+  <%= f.hidden_field :hotel_room_id%><br>
   <%= f.hidden_field :user_id, value: current_user.id%><br>
+
   <%= f.submit %>
 
 <%end%>

@@ -5,6 +5,9 @@ class ReviewsController < ApplicationController
 		 	redirect_to "/hotels/#{review_params[:hotel_id]}"
   end
 
+  
+
+
   private
 
   def review_params

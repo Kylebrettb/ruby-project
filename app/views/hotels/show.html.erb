@@ -16,6 +16,12 @@
 		  <%= f.submit %>
 
 		<%end%>
+<p>New Reviews</p>
+<%@hotel.new_reviews.each do |review|%>
+<p><%=review.user.name%> said <%=review.content%>/<%=review.created_at%></p>
+<%end%>
+
+<p>All Reviews</p>
 
 <%@hotel.reviews.each do |review|%>
 <p><%=review.user.name%> said <%=review.content%>/<%=review.created_at%></p>
